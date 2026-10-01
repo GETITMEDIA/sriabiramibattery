@@ -1,0 +1,311 @@
+/* Responsive fixes: layout-only adjustments, loaded after all other styles.
+   No colours, fonts or content are changed here. */
+
+/* Never allow sideways page scrolling (clip does not break sticky headers) */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* Media never wider than its container */
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* Long emails / addresses wrap instead of overflowing */
+.single-info-box,
+.single-info-box a,
+.contact-info li,
+.contact-info li a,
+.footer-widget .post h6,
+.footer-widget .post h6 a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Footer contact rows: let the text column shrink */
+.footer-widget .post > div {
+  min-width: 0;
+}
+
+/* ---------- Header with hamburger menu (<= 1200px) ---------- */
+@media only screen and (max-width: 1200px) {
+  /* Logo on the left, menu button on the right, on one line */
+  .main-header .menu-area {
+    float: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .main-header .menu-area .logo-box {
+    float: none;
+    margin-right: 0;
+  }
+
+  .main-header .menu-area .mobile-nav-toggler {
+    float: none;
+    margin: 0 0 0 auto;
+  }
+
+  /* Desktop menu is hidden here; its links are copied into the mobile menu */
+  .main-header .menu-area .main-menu {
+    display: none;
+  }
+}
+
+/* ---------- Tablet (<= 991px) ---------- */
+@media (max-width: 991px) {
+  /* Exide solar page: side-by-side text/image block stacks */
+  body .solar-section.corporate {
+    flex-direction: column;
+    padding: 40px 30px;
+  }
+
+  .solar-section.corporate .solar-content,
+  .solar-section.corporate .solar-image {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ---------- Mobile (<= 767px) ---------- */
+@media (max-width: 767px) {
+  body .solar-section.corporate {
+    padding: 30px 15px;
+    gap: 20px;
+  }
+
+  /* Product / tab buttons wrap neatly */
+  .tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Product grids: cards use the available width */
+  .product-grid,
+  .product-container {
+    max-width: 100%;
+  }
+
+  .product-card,
+  .product-item {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Gallery videos keep their aspect ratio */
+  .gallery-item video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* ==========================================================
+   Mobile slide-out menu (hamburger) – refreshed layout
+   Same colours as the site: navy #1e2434, green #56b13d
+   ========================================================== */
+.mobile-menu {
+  width: 320px;
+  max-width: 86vw;
+  padding-right: 0;
+}
+
+.mobile-menu .menu-box {
+  display: flex;
+  flex-direction: column;
+  background: #1e2434;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Logo strip */
+.mobile-menu .nav-logo {
+  padding: 22px 70px 22px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu .nav-logo img {
+  max-height: 64px;
+  width: auto;
+}
+
+/* Close button */
+.mobile-menu .close-btn {
+  top: 26px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 16px;
+}
+
+.mobile-menu .close-btn:hover {
+  background: #56b13d;
+}
+
+/* Menu list */
+.mobile-menu .menu-outer {
+  padding: 12px 0;
+}
+
+.mobile-menu .navigation li,
+.mobile-menu .navigation li > ul > li:first-child {
+  border-top: none;
+}
+
+.mobile-menu .navigation:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu .navigation > li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-menu .navigation li > a {
+  font-family: 'Lexend', sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  line-height: 22px;
+  padding: 15px 60px 15px 24px;
+  color: #ffffff;
+}
+
+.mobile-menu .navigation li > a:hover,
+.mobile-menu .navigation li.current > a {
+  color: #56b13d;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Green accent bar on the active item */
+.mobile-menu .navigation li > a:before {
+  border-left: 3px solid #56b13d;
+}
+
+/* Dropdown toggle: full-height chevron area */
+.mobile-menu .navigation li.dropdown .dropdown-btn {
+  top: 0;
+  right: 0;
+  width: 56px;
+  height: 52px;
+  line-height: 52px;
+  font-size: 18px;
+  background: transparent;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mobile-menu .navigation li.dropdown .dropdown-btn.open {
+  color: #56b13d;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/* Sub-menu */
+.mobile-menu .navigation li > ul {
+  background: rgba(0, 0, 0, 0.18);
+  padding: 6px 0;
+}
+
+.mobile-menu .navigation li ul li > a {
+  margin-left: 0;
+  padding: 10px 24px 10px 42px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.mobile-menu .navigation li ul li > a:after {
+  content: '';
+  position: absolute;
+  left: 26px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.mobile-menu .navigation li ul li > a:hover:after {
+  background: #56b13d;
+}
+
+/* Contact block */
+.mobile-menu .contact-info {
+  margin: 10px 18px 24px;
+  padding: 20px 18px 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu .contact-info h4 {
+  font-family: 'Lexend', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #56b13d;
+  margin-bottom: 14px;
+}
+
+.mobile-menu .contact-info ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 14px;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mobile-menu .contact-info ul li:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  text-align: center;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #56b13d;
+}
+
+.mobile-menu .contact-info ul li:nth-child(1):before { content: '\f3c5'; } /* address */
+.mobile-menu .contact-info ul li:nth-child(2):before { content: '\f095'; } /* phone */
+.mobile-menu .contact-info ul li:nth-child(3):before { content: '\f0e0'; } /* email */
+
+.mobile-menu .contact-info ul li a {
+  color: #ffffff;
+}
+
+/* Template placeholder social icons link nowhere – hide them */
+.mobile-menu .social-links {
+  display: none;
+}
+
+.mobile-menu .contact-info,
+.mobile-menu .contact-info * {
+  font-family: 'Lexend', sans-serif;
+  font-style: normal;
+}
+
+.mobile-menu .contact-info ul li:before {
+  font-family: 'Font Awesome 5 Free';
+}
+
+.mobile-menu .contact-info ul li:nth-child(3) {
+  font-size: 12px;
+  letter-spacing: -0.1px;
+}
