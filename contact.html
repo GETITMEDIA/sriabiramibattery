@@ -380,36 +380,37 @@
                         <h3>Send Your Message</h3>
                         <p>Please feel free to get in touch using the form below. We'd love to hear for you.</p>
                     </div>
-                    <form method="post" action="https://st.ourhtmldemo.com/new/Energo/sendemail.php" id="contact-form" class="default-form"> 
+                    <form method="post" action="#" id="contact-form" class="default-form" novalidate> 
                         <div class="row clearfix">
                             <div class="col-lg-6 col-md-6 col-sm-12 column">
                                 <div class="form-group">
                                     <i class="far fa-user"></i>
-                                    <input type="text" name="username" placeholder="Your Name" required="">
+                                    <input type="text" name="username" placeholder="Your Name" required="" maxlength="50" autocomplete="name">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 column">
                                 <div class="form-group">
                                     <i class="far fa-envelope-open"></i>
-                                    <input type="email" name="email" placeholder="Email Address" required="">
+                                    <input type="email" name="email" placeholder="Email Address" required="" maxlength="100" autocomplete="email">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 column">
                                 <div class="form-group">
                                     <i class="far fa-phone"></i>
-                                    <input type="text" name="phone" required="" placeholder="Phone Number">
+                                    <span class="phone-prefix" style="position: absolute; left: 20px; top: 0; height: 58px; line-height: 58px; font-size: 18px; color: #222; z-index: 2; pointer-events: none;">+91</span>
+                                    <input type="text" name="phone" required="" placeholder="Phone Number" maxlength="10" inputmode="numeric" pattern="[6-9][0-9]{9}" autocomplete="tel-national" style="padding-left: 62px;">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 column">
                                 <div class="form-group">
                                     <i class="far fa-desktop"></i>
-                                    <input type="text" name="subject" required="" placeholder="Website">
+                                    <input type="text" name="subject" placeholder="Website (optional)" maxlength="100">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 column">
                                 <div class="form-group">
                                     <i class="far fa-text-width"></i>
-                                    <textarea name="message" placeholder="Your Message..."></textarea>
+                                    <textarea name="message" placeholder="Your Message..." required="" maxlength="1000"></textarea>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 column">
@@ -574,6 +575,94 @@
 
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
+<script>
+  // Contact form: validation + send to WhatsApp
+  (function () {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    // Replace the template jQuery validator with the rules below
+    if (window.jQuery) { jQuery(form).off(); jQuery.removeData(form, "validator"); }
+
+    var f = form.elements;
+    var rules = {
+      username: function (v) {
+        if (!v) return "Please enter your name.";
+        if (!/^[A-Za-z][A-Za-z .]{2,49}$/.test(v)) return "Name should have at least 3 letters (letters and spaces only).";
+      },
+      email: function (v) {
+        if (!v) return "Please enter your email address.";
+        if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v)) return "Please enter a valid email address.";
+      },
+      phone: function (v) {
+        if (!v) return "Please enter your phone number.";
+        if (!/^[0-9]{10}$/.test(v)) return "Phone number must be exactly 10 digits.";
+        if (!/^[6-9]/.test(v)) return "Please enter a valid Indian mobile number.";
+      },
+      subject: function (v) {
+        if (v && !/^(https?:\/\/)?([\w-]+\.)+[a-z]{2,}(\/\S*)?$/i.test(v)) return "Please enter a valid website (e.g. example.com).";
+      },
+      message: function (v) {
+        if (!v) return "Please enter your message.";
+        if (v.length < 10) return "Message should be at least 10 characters.";
+      }
+    };
+
+    function showError(input, msg) {
+      var group = input.closest(".form-group");
+      var err = group.querySelector(".field-error");
+      if (!err) {
+        err = document.createElement("span");
+        err.className = "field-error";
+        err.style.cssText = "display:block; color:#e60000; font-size:14px; margin-top:6px;";
+        group.appendChild(err);
+      }
+      err.textContent = msg || "";
+      err.style.display = msg ? "block" : "none";
+      input.style.borderColor = msg ? "#e60000" : "";
+    }
+
+    function check(name) {
+      var input = f[name];
+      var msg = rules[name](input.value.trim());
+      showError(input, msg);
+      return !msg;
+    }
+
+    // Phone: digits only, max 10
+    f.phone.addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, "").slice(0, 10);
+    });
+    // Name: no digits/symbols
+    f.username.addEventListener("input", function () {
+      this.value = this.value.replace(/[^A-Za-z .]/g, "");
+    });
+
+    Object.keys(rules).forEach(function (name) {
+      f[name].addEventListener("blur", function () { check(name); });
+      f[name].addEventListener("input", function () {
+        if (f[name].style.borderColor) check(name);
+      });
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var ok = true, first = null;
+      Object.keys(rules).forEach(function (name) {
+        if (!check(name)) { ok = false; first = first || f[name]; }
+      });
+      if (!ok) { first.focus(); return; }
+
+      var text = "New enquiry from website\n" +
+        "Name: " + f.username.value.trim() + "\n" +
+        "Email: " + f.email.value.trim() + "\n" +
+        "Phone: +91 " + f.phone.value.trim() + "\n" +
+        (f.subject.value.trim() ? "Website: " + f.subject.value.trim() + "\n" : "") +
+        "Message: " + f.message.value.trim();
+      window.open("https://wa.me/918012555111?text=" + encodeURIComponent(text), "_blank");
+      form.reset();
+    });
+  })();
+</script>
 
 </body><!-- End of .page_wrapper -->
 

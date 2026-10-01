@@ -1492,6 +1492,8 @@ Michelin offers a variety of bike tyres in India. Some of the most popular tyre 
 
   </div>
 </section>
+  </div>
+</section>
 
 
 <script>
@@ -1636,85 +1638,52 @@ Michelin offers a variety of bike tyres in India. Some of the most popular tyre 
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
 <script>
-  // Select all videos inside the gallery
-  const videos = document.querySelectorAll('.gallery-item video');
+  // Gallery video controls: play/pause, mute/unmute, fullscreen (one handler per button)
+  document.querySelectorAll(".gallery-item .video-wrapper").forEach(function (wrap) {
+    var video = wrap.querySelector("video");
+    var playBtn = wrap.querySelector(".play-btn");
+    var soundBtn = wrap.querySelector(".sound-btn");
+    var fsBtn = wrap.querySelector(".fullscreen-btn");
+    if (!video) return;
 
-  videos.forEach(video => {
-    video.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
+    function syncPlay() { if (playBtn) playBtn.innerHTML = video.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>'; }
+    function syncSound() { if (soundBtn) soundBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>'; }
+    function togglePlay() { if (video.paused) { video.play(); } else { video.pause(); } }
+
+    video.addEventListener("play", syncPlay);
+    video.addEventListener("pause", syncPlay);
+    video.addEventListener("volumechange", syncSound);
+    video.addEventListener("click", togglePlay);
+
+    if (playBtn) playBtn.addEventListener("click", function (e) { e.stopPropagation(); togglePlay(); });
+    if (soundBtn) soundBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      if (!video.muted) { video.volume = 1; if (video.paused) video.play(); }
+    });
+    if (fsBtn) fsBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+        else if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
       } else {
-        video.pause();
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       }
     });
+    syncPlay(); syncSound();
   });
-</script>
-<script>// Play/Pause Button Functionality
-document.querySelectorAll('.play-btn').forEach((button, index) => {
-  const video = button.closest('.video-wrapper').querySelector('video');
-  button.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      button.innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-      video.pause();
-      button.innerHTML = '<i class="fas fa-play"></i>';
-    }
-  });
-});
 
-// Sound Button Functionality
-document.querySelectorAll('.sound-btn').forEach((button, index) => {
-  const video = button.closest('.video-wrapper').querySelector('video');
-  button.addEventListener('click', () => {
-    video.muted = !video.muted;
-    button.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-  });
-});
-</script>
-<script>
-// Play / Pause
-document.querySelectorAll('.play-btn').forEach((btn) => {
-  const video = btn.closest('.video-wrapper').querySelector('video');
-  btn.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-      btn.innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-      video.pause();
-      btn.innerHTML = '<i class="fas fa-play"></i>';
-    }
-  });
-});
-
-// Mute / Unmute
-document.querySelectorAll('.sound-btn').forEach((btn) => {
-  const video = btn.closest('.video-wrapper').querySelector('video');
-  btn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    btn.innerHTML = video.muted
-      ? '<i class="fas fa-volume-mute"></i>'
-      : '<i class="fas fa-volume-up"></i>';
-  });
-});
-
-// Fullscreen
-document.querySelectorAll('.fullscreen-btn').forEach((btn) => {
-  const video = btn.closest('.video-wrapper').querySelector('video');
-  btn.addEventListener('click', () => {
-    if (!document.fullscreenElement) {
-      if (video.requestFullscreen) video.requestFullscreen();
-      else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-      else if (video.msRequestFullscreen) video.msRequestFullscreen();
-      btn.innerHTML = '<i class="fas fa-compress"></i>';
-    } else {
-      if (document.exitFullscreen) document.exitFullscreen();
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      else if (document.msExitFullscreen) document.msExitFullscreen();
-      btn.innerHTML = '<i class="fas fa-expand"></i>';
-    }
-  });
-});
+  function syncFullscreenIcons() {
+    var active = document.fullscreenElement || document.webkitFullscreenElement;
+    document.querySelectorAll(".gallery-item .fullscreen-btn").forEach(function (btn) {
+      var v = btn.closest(".video-wrapper").querySelector("video");
+      btn.innerHTML = active === v ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+    });
+  }
+  document.addEventListener("fullscreenchange", syncFullscreenIcons);
+  document.addEventListener("webkitfullscreenchange", syncFullscreenIcons);
 </script>
 
 <script>
