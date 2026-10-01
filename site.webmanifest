@@ -1,0 +1,19 @@
+{
+  "name": "Sri Abirami Battery",
+  "short_name": "Sri Abirami",
+  "icons": [
+    {
+      "src": "assets/images/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ed3237",
+  "background_color": "#ffffff",
+  "display": "browser"
+}
