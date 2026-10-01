@@ -38,6 +38,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#ed3237">
+<link href="assets/css/responsive-fix.css" rel="stylesheet">
 </head>
 <body>
        <header class="main-header">
@@ -584,7 +585,7 @@ body {
     document.getElementById(tabId).style.display = "block";
 
     // Highlight clicked button
-    event.currentTarget.classList.add("active");
+    if (window.event && event.currentTarget && event.currentTarget.classList) event.currentTarget.classList.add("active");
   }
 
   // Default open first tab (Car Batteries)

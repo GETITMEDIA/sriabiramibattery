@@ -658,28 +658,6 @@ function showTab(tabId) {
   }
 
 
-document.getElementById('order-now').addEventListener('click', function() {
-    var product = this.getAttribute('data-product');
-    var message = "Hello, I would like to order the product: " + product + ".";
-    
-    // Encode the message to handle special characters
-    var whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message);
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
-});
-
-
-  const phone = "8012555111"; // <-- Replace with your actual WhatsApp number (no + or dashes)
-
-  document.querySelectorAll('.whatsapp-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const product = btn.getAttribute('data-product');
-      const warranty = btn.getAttribute('data-warranty');
-      const message = `I'm interested in ${product} Battery with ${warranty} warranty.`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    });
-  });
+// WhatsApp buttons are handled by each product page's own script.
 
 
