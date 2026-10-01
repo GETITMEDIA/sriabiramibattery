@@ -329,7 +329,7 @@
                             <nav class="main-menu navbar-expand-md navbar-light">
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
-                                        <li class="current dropdown"><a href="index.html">Home</a>
+                                        <li class="current"><a href="index.html">Home</a>
                                            
                                         </li>
                                         <!-- <li class="dropdown"><a href="index.html">About</a> -->
@@ -607,7 +607,7 @@
   <div class="product-container">
     <!-- Solar Panel 1 -->
     <div class="product-item">
-      <img src="/assets/images/EASTMAN/50W Solar Panel.webp" alt="Addo 50W Solar Panel" class="product-image">
+      <img src="assets/images/EASTMAN/50W Solar Panel.webp" alt="Addo 50W Solar Panel" class="product-image">
       <h3>50W Solar Panel</h3>
       <p>
         Compact and efficient, the 50W solar panel is ideal for small-scale applications. It provides excellent performance in sunny conditions and is perfect for off-grid systems.
@@ -617,7 +617,7 @@
 
     <!-- Solar Panel 2 -->
     <div class="product-item">
-      <img src="/assets/images/EASTMAN/125W Solar Panel.webp" alt="Addo 125W Solar Panel" class="product-image">
+      <img src="assets/images/EASTMAN/125W Solar Panel.webp" alt="Addo 125W Solar Panel" class="product-image">
       <h3>125W Solar Panel</h3>
       <p>
         The 125W solar panel is designed for both residential and commercial systems, offering a balance of size and performance to meet your power needs efficiently.
@@ -627,7 +627,7 @@
 
     <!-- Solar Panel 3 -->
     <div class="product-item">
-      <img src="/assets/images/EASTMAN/210W Solar Panel11.jpg" alt="Addo 210W Solar Panel" class="product-image">
+      <img src="assets/images/EASTMAN/210W Solar Panel11.jpg" alt="Addo 210W Solar Panel" class="product-image">
       <h3>210W Solar Panel</h3>
       <p>
         The 210W panel is a high-efficiency option for mid-sized systems. It offers a great blend of power output and durability for residential and commercial applications.
@@ -637,7 +637,7 @@
 
     <!-- Solar Panel 4 -->
     <div class="product-item">
-      <img src="/assets/images/EASTMAN/545-550W (Bifacial) Solar Panel.jpg" alt="Addo 545-550W Bifacial Solar Panel" class="product-image">
+      <img src="assets/images/EASTMAN/545-550W (Bifacial) Solar Panel.jpg" alt="Addo 545-550W Bifacial Solar Panel" class="product-image">
       <h3>545-550W (Bifacial) Solar Panel</h3>
       <p>
         The bifacial solar panel generates power from both sides, making it ideal for areas with high sunlight reflection. With high output, it's perfect for large-scale commercial installations.
@@ -647,7 +647,7 @@
 
     <!-- Solar Panel 5 -->
     <div class="product-item">
-      <img src="/assets/images/EASTMAN/590W (TOPCON) Solar Panel.jpg" alt="Addo 590W TOPCON Solar Panel" class="product-image">
+      <img src="assets/images/EASTMAN/590W (TOPCON) Solar Panel.jpg" alt="Addo 590W TOPCON Solar Panel" class="product-image">
       <h3>590W (TOPCON) Solar Panel</h3>
       <p>
         The 590W TOPCON solar panel offers high efficiency and performance, with advanced technology for high-output applications, making it ideal for industrial-scale solar systems.
@@ -880,7 +880,7 @@
                                         <li><a href="exidesolarpanal.html">exide</a></li>
                                         <li><a href="amarancar.html">amaron</a></li>
                                         <li><a href="microtek.html">microtek</a></li>
-                                        <li><a href="Addo.html">Addo</a></li>
+                                        <li><a href="eastman.html">eastman</a></li>
                                         <li><a href="index.html">tyres</a></li>
                                         <li><a href="index.html">Contact Us</a></li>
                                     </ul>
@@ -931,13 +931,15 @@
                 <div class="auto-container">
                     <div class="inner-box clearfix">
                         <div class="copyright pull-left">
-                            <p>Copyright &copy; 2021 <a href="index.html">Energo</a>. All Rights Reserved.</p>
+                            <p id="copyright-text"></p>
+                            <script>
+                                document.getElementById('copyright-text').innerHTML =
+                                    'Copyright &copy; ' + new Date().getFullYear() + ' <a href="index.html">Energo</a>. All Rights Reserved.';
+                            </script>
                         </div>
-                        <ul class="footer-nav clearfix pull-right">
-                            <li><a href="index.html">Terms & Conditions</a></li>
-                            <li><a href="index.html">Privacy Policy</a></li>
-                            <li><a href="index.html">Sitemap</a></li>
-                        </ul>
+                        <div class="footer-nav clearfix pull-right">
+                            <p style="color:#aab0bf;margin:0;">Proudly Created with <a style="color:#fff;font-weight:600;" href="https://getitmediasolutions.com/" target="_blank" rel="noopener">GetItMedia Solutions</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -971,6 +973,18 @@
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
 
+<script>
+  // View Products -> WhatsApp enquiry
+  document.querySelectorAll(".view-products-link").forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      var card = link.closest(".product-item");
+      var title = card && card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "your products";
+      var message = "Hi, I would like to enquire about " + title + ". Please share the details.";
+      window.open("https://wa.me/918012555111?text=" + encodeURIComponent(message), "_blank");
+    });
+  });
+</script>
 </body><!-- End of .page_wrapper -->
 
 <!-- Mirrored from st.ourhtmldemo.com/new/Energo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Sep 2025 06:40:46 GMT -->

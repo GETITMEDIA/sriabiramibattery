@@ -328,7 +328,7 @@
                             <nav class="main-menu navbar-expand-md navbar-light">
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
-                                        <li class="current dropdown"><a href="index.html">Home</a>
+                                        <li class="current"><a href="index.html">Home</a>
                                            
                                         </li>
                                         <!-- <li class="dropdown"><a href="index.html">About</a> -->
@@ -590,7 +590,7 @@
   <div class="product-container">
     <!-- Product 1 -->
     <div class="product-item">
-      <img src="/assets/images/microtek/4000VA.webp" alt="Microtek Home UPS" class="product-image">
+      <img src="assets/images/microtek/4000VA.webp" alt="Microtek Home UPS" class="product-image">
       <h3>Inverter/Home UPS</h3>
       <p>
         Microtek’s Home UPS solutions come in various configurations to meet power backup requirements for all homes. These products go through strict quality control and come with robust after-sales support.
@@ -600,7 +600,7 @@
 
     <!-- Product 2 -->
     <div class="product-item">
-      <img src="/assets/images/microtek/2.5KVA.jpg" alt="Microtek Jumbo UPS" class="product-image">
+      <img src="assets/images/microtek/2.5KVA.jpg" alt="Microtek Jumbo UPS" class="product-image">
       <h3>Jumbo/Home UPS</h3>
       <p>
         Specially designed for running higher loads for longer hours, the Microtek Jumbo UPS offers Pure Sinewave Output, Overload Sense, and Short Circuit Protection. A reliable solution for uninterrupted backup.
@@ -610,7 +610,7 @@
 
     <!-- Product 3 -->
     <div class="product-item">
-      <img src="/assets/images/microtek/Trolley.jpg" alt="Microtek UPS Trolley" class="product-image">
+      <img src="assets/images/microtek/Trolley.jpg" alt="Microtek UPS Trolley" class="product-image">
       <h3>UPS Trolley</h3>
       <p>
         The UPS Trolley is designed for elegant look and safety. It’s made from long-lasting materials, providing safety for children and preventing damage to the floor due to acid spillage.
@@ -620,7 +620,7 @@
 
     <!-- Product 4 -->
     <div class="product-item">
-      <img src="/assets/images/microtek/Online.jpg" alt="Microtek Online UPS" class="product-image">
+      <img src="assets/images/microtek/Online.jpg" alt="Microtek Online UPS" class="product-image">
       <h3>Online UPS</h3>
       <p>
         Offering a wide range of Online UPS solutions from 1KVA to 40KVA, Microtek ensures dependable power backup for IT and industrial applications with varying backup times.
@@ -910,29 +910,24 @@
                     <div class="row clearfix">
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget logo-widget">
-                                <figure class="footer-logo"><a href="index.html"><img src="assets/images/footer-logo.png" alt=""></a></figure>
-                                <div class="support-box">
-                                    <i class="far fa-envelope-open"></i>
-                                    <h6>Free Consult</h6>
-                                    <a href="mailto:support@info.com">support@info.com</a>
-                                </div>
+                                <figure class="footer-logo"><a href="index.html"><img style="width: auto;height: 70px;" src="assets/img/abirami_logo(transparent).png" alt=""></a></figure>
+                               
                                 <div class="text">
-                                    <p>Our goal to help our companies maintains achieve best  position their respective industries best team work that work have hand to be repudiated.</p>
-                                </div>
+<p>Sri Abirami Battery, Exide dealer since 2005 in Mayiladuthurai. Showroom: General Hospital Road, opposite Amma Unavagam. Fast supply and service of Exide batteries and inverters.</p>                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget links-widget">
                                 <div class="widget-title">
-                                    <h5>Company</h5>
+                                    <h5>products</h5>
                                 </div>
                                 <div class="widget-content">
                                     <ul class="links-list clearfix">
-                                        <li><a href="index.html">About Us</a></li>
-                                        <li><a href="index.html">Leadership</a></li>
-                                        <li><a href="index.html">How  It’s Work</a></li>
-                                        <li><a href="index.html">Pricing Plan</a></li>
-                                        <li><a href="index.html">Policies</a></li>
+                                        <li><a href="exidesolarpanal.html">exide</a></li>
+                                        <li><a href="amarancar.html">amaron</a></li>
+                                        <li><a href="microtek.html">microtek</a></li>
+                                        <li><a href="eastman.html">eastman</a></li>
+                                        <li><a href="index.html">tyres</a></li>
                                         <li><a href="index.html">Contact Us</a></li>
                                     </ul>
                                 </div>
@@ -982,13 +977,15 @@
                 <div class="auto-container">
                     <div class="inner-box clearfix">
                         <div class="copyright pull-left">
-                            <p>Copyright &copy; 2021 <a href="index.html">Energo</a>. All Rights Reserved.</p>
+                            <p id="copyright-text"></p>
+                            <script>
+                                document.getElementById('copyright-text').innerHTML =
+                                    'Copyright &copy; ' + new Date().getFullYear() + ' <a href="index.html">Energo</a>. All Rights Reserved.';
+                            </script>
                         </div>
-                        <ul class="footer-nav clearfix pull-right">
-                            <li><a href="index.html">Terms & Conditions</a></li>
-                            <li><a href="index.html">Privacy Policy</a></li>
-                            <li><a href="index.html">Sitemap</a></li>
-                        </ul>
+                        <div class="footer-nav clearfix pull-right">
+                            <p style="color:#aab0bf;margin:0;">Proudly Created with <a style="color:#fff;font-weight:600;" href="https://getitmediasolutions.com/" target="_blank" rel="noopener">GetItMedia Solutions</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1022,6 +1019,18 @@
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
 
+<script>
+  // View Products -> WhatsApp enquiry
+  document.querySelectorAll(".view-products-link").forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      var card = link.closest(".product-item");
+      var title = card && card.querySelector("h3") ? card.querySelector("h3").textContent.trim() : "your products";
+      var message = "Hi, I would like to enquire about " + title + ". Please share the details.";
+      window.open("https://wa.me/918012555111?text=" + encodeURIComponent(message), "_blank");
+    });
+  });
+</script>
 </body><!-- End of .page_wrapper -->
 
 <!-- Mirrored from st.ourhtmldemo.com/new/Energo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Sep 2025 06:40:46 GMT -->

@@ -127,7 +127,7 @@
                             <nav class="main-menu navbar-expand-md navbar-light">
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
-                                        <li class="dropdown"><a href="index.html">Home</a>
+                                        <li><a href="index.html">Home</a>
                                             <ul>
                                                 <li><a href="index.html">Home 01</a></li>
                                                 <li><a href="index-2.html">Home 02</a></li>
@@ -979,13 +979,15 @@
                 <div class="auto-container">
                     <div class="inner-box clearfix">
                         <div class="copyright pull-left">
-                            <p>Copyright &copy; 2021 <a href="index.html">Energo</a>. All Rights Reserved.</p>
+                            <p id="copyright-text"></p>
+                            <script>
+                                document.getElementById('copyright-text').innerHTML =
+                                    'Copyright &copy; ' + new Date().getFullYear() + ' <a href="index.html">Energo</a>. All Rights Reserved.';
+                            </script>
                         </div>
-                        <ul class="footer-nav clearfix pull-right">
-                            <li><a href="index.html">Terms & Conditions</a></li>
-                            <li><a href="index.html">Privacy Policy</a></li>
-                            <li><a href="index.html">Sitemap</a></li>
-                        </ul>
+                        <div class="footer-nav clearfix pull-right">
+                            <p style="color:#aab0bf;margin:0;">Proudly Created with <a style="color:#fff;font-weight:600;" href="https://getitmediasolutions.com/" target="_blank" rel="noopener">GetItMedia Solutions</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
