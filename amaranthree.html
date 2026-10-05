@@ -179,18 +179,6 @@
   </div>
   <!-- Features End -->
 
-  <!-- Breadcrumb Start -->
-  <div class="container py-3">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="#">HOME</a></li>
-        <li class="breadcrumb-item"><a href="#">AMARON</a></li>
-        <li class="breadcrumb-item active" aria-current="page"> THREE WHEELER</li>
-      </ol>
-    </nav>
-  </div>
-  <!-- Breadcrumb End -->
-
   <!-- Intro Content Start -->
 <div class="container py-5">
   <div class="row g-5">
@@ -226,7 +214,7 @@
 
 <!-- Car Batteries -->
 <!-- Car Batteries -->
-<div id="amaronthreewheeler" class="tab-content">
+<div id="amaronthreewheeler" class="tab-content is-shown active" style="display: block;">
   <div class="product-grid" id="products">
     <div class="product-card">
       <img src="assets/images/amaran/BL300L3333.jpg" alt="BL300L/R" loading="lazy" decoding="async">
@@ -258,31 +246,7 @@
         <!-- main-footer end -->
 
   
-  <script>
-  function openTab(tabId) {
-    // Hide all tab contents
-    const tabContents = document.querySelectorAll(".tab-content");
-    tabContents.forEach(content => {
-      content.style.display = "none";
-    });
 
-    // Remove active state from all tab buttons
-    const tabButtons = document.querySelectorAll(".tabs .tab-btn");
-    tabButtons.forEach(btn => btn.classList.remove("active"));
-
-    // Show the selected tab
-    document.getElementById(tabId).style.display = "block";
-
-    // Highlight clicked button
-    if (window.event && event.currentTarget && event.currentTarget.classList) event.currentTarget.classList.add("active");
-  }
-
-  // Default open first tab (Car Batteries)
-  document.addEventListener("DOMContentLoaded", function () {
-    openTab("amaronthreewheeler");
-    const firstBtn = document.querySelector(".tabs .tab-btn"); if (firstBtn) firstBtn.classList.add("active");
-  });
-</script>
 
     <!-- jequery plugins -->
     

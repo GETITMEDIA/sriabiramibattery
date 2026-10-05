@@ -179,40 +179,28 @@
 
   <!-- Features End -->
 
-  <!-- Breadcrumb Start -->
-  <div class="container py-3">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="#">HOME</a></li>
-        <li class="breadcrumb-item"><a href="#">exide car</a></li>
-        <li class="breadcrumb-item active" aria-current="page">exide bike</li>
-      </ol>
-    </nav>
-  </div>
-  <!-- Breadcrumb End -->
-
   <!-- Intro Content Start -->
   <div class="container py-5">
   <div class="row align-items-center g-5">
-    <!-- Left: Image -->
+    <!-- Left: Video -->
     <div class="col-lg-6 animate-left">
-     <video class="img-fluid rounded shadow" autoplay="" muted="" loop="" playsinline="">
-  <source src="assets/images/exide/CAR.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+      <video class="img-fluid rounded shadow" autoplay="" muted="" loop="" playsinline="">
+        <source src="assets/images/exide/CAR.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
-<!-- Right: Text Content -->
-<div class="col-lg-6 animate-right">
-  <h2>BUY EXIDE CAR BATTERIES ONLINE AT BEST PRICE</h2>
+    <!-- Right: Text Content -->
+    <div class="col-lg-6 animate-right">
+      <h2>BUY EXIDE CAR BATTERIES ONLINE AT BEST PRICE</h2>
 
-  <p>
-    Welcome to Abirami Batteries, your reliable destination for Exide car batteries. Engineered for unmatched performance and durability, Exide car batteries deliver powerful cranking and long-lasting energy for a smooth driving experience. 
-    With advanced technology and zero-maintenance design, Exide ensures your vehicle stays powered in all conditions — from city traffic to long highway drives.
-  </p>
+      <p>
+        Welcome to Abirami Batteries, your reliable destination for Exide car batteries. Engineered for unmatched performance and durability, Exide car batteries deliver powerful cranking and long-lasting energy for a smooth driving experience. 
+        With advanced technology and zero-maintenance design, Exide ensures your vehicle stays powered in all conditions — from city traffic to long highway drives.
+      </p>
+    </div>
+  </div>
 </div>
-
-  <!-- Intro Content End -->
+<!-- Intro Content End -->
 
   <!-- Reasons Section Start -->
   <!-- <div class="container py-5">
@@ -241,118 +229,14 @@
 
     
 
-    <script>
-        function openTab(evt, tabName) {
-            let i, tabcontent, tablinks;
-
-            // 1. Hide all elements with class="tab-content"
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // 2. Remove the "active" class from all tab buttons
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // 3. Show the current tab, and add an "active" class to the button
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-
-        // 4. Open the 'EXIDE CAR BATTERIES' tab by default on page load
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Find the button for 'EXIDE CAR BATTERIES' which should be the default
-            const defaultButton = document.querySelector('.tab-btn[onclick*="\'exidecar\'"]');
-
-            if (defaultButton) {
-                // Manually call the function to open the default tab
-                openTab({ currentTarget: defaultButton }, 'exidecar');
-            }
-        });
-    </script>
-
-<!-- ✅ JavaScript to handle WhatsApp click -->
-<script>
-  const phone = "918012555111"; // <-- Replace with your actual WhatsApp number (no + or dashes)
-
-  document.querySelectorAll('.whatsapp-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const product = btn.getAttribute('data-product');
-      const warranty = btn.getAttribute('data-warranty');
-      const message = `I'm interested in ${product} Battery with ${warranty} warranty.`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    });
-  });
-</script>
-
- 
-
-  
-<script>
-function openTab(evt, tabName) {
-    // Declare all variables
-    let i, tabcontent, tablinks;
-
-    // Get all elements with class="tab-content" and hide them
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tab-btn" and remove the class "active"
-    tablinks = document.getElementsByClassName("tab-btn");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Optional: To open the 'EXIDE CAR BATTERIES' tab by default on page load
-document.addEventListener('DOMContentLoaded', (event) => {
-    const defaultButton = document.querySelector('.tab-btn[onclick*="\'exidecar\'"]');
-
-    if (defaultButton) {
-        openTab({ currentTarget: defaultButton }, 'exidecar');
-    }
-});
-</script>
-
-    <!-- jequery plugins -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      
-    
-    
-
-    <!-- main-js -->
-    
-
-    
-        </div>
-
-<!-- main-footer -->
-           </div><h2>🔋 EXIDE CAR BATTERIES</h2><div class="tabs" id="products">
-        <button class="tab-btn active" onclick="openTab(event, 'exidecar')">EXIDE CAR BATTERIES</button>
-        <button class="tab-btn" onclick="openTab(event, 'exideheavy')">HEAVY VEHICLE (XPRESS RANGE)</button>
-        <button class="tab-btn" onclick="openTab(event, 'exidedrive')">HEAVY VEHICLE (Drive RANGE)</button>
-        <button class="tab-btn" onclick="openTab(event, 'tractor')">TRACTOR SERIES</button>
-    </div><div class="tab-content" id="exidecar">
+    <h2>🔋 EXIDE CAR BATTERIES</h2>
+    <div class="tabs" id="products">
+        <button class="tab-btn active" onclick="openTab('exidecar')">EXIDE CAR BATTERIES</button>
+        <button class="tab-btn" onclick="openTab('exideheavy')">HEAVY VEHICLE (XPRESS RANGE)</button>
+        <button class="tab-btn" onclick="openTab('exidedrive')">HEAVY VEHICLE (Drive RANGE)</button>
+        <button class="tab-btn" onclick="openTab('tractor')">TRACTOR SERIES</button>
+    </div>
+    <div class="tab-content" id="exidecar">
         <h2>Four Wheeler Batteries</h2>
         <div class="product-grid">
             <div class="product-card">

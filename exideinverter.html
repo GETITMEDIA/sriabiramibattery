@@ -175,7 +175,7 @@
   <h2>🔋 Inverter Batteries</h2>
 
   <div class="tabs" id="products">
-    <button class="tab-btn" onclick="openTab('invamaster')">Invamaster</button>
+    <button class="tab-btn active" onclick="openTab('invamaster')">Invamaster</button>
     <button class="tab-btn" onclick="openTab('elseries')">EL Series</button>
     <button class="tab-btn" onclick="openTab('starrangr')"> Star Range</button>
     <button class="tab-btn" onclick="openTab('gqprange')">GQP Range</button>
@@ -183,7 +183,7 @@
   </div>
 
   <!-- Invamaster -->
- <div id="invamaster" class="tab-content">
+ <div id="invamaster" class="tab-content active" style="display: block;">
   <div class="product-grid">
     <div class="product-card">
       <img src="assets/images/exide/invamasterIMST1000.jpg" alt="IMST1000" class="product-image" loading="lazy" decoding="async">
@@ -339,32 +339,7 @@
     </div>
   </div>
 </div>
-
-  <script>
-    function openTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-    }
-
-    // Default open
-    openTab('invamaster');
-  </script>
     </div>
-<script>
-  const phone = "918012555111"; // <-- Replace with your actual WhatsApp number (no + or dashes)
-
-  document.querySelectorAll('.whatsapp-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const product = btn.getAttribute('data-product');
-      const warranty = btn.getAttribute('data-warranty');
-      const message = `I'm interested in ${product} Battery with ${warranty} warranty.`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
-    });
-  });
-</script>
 
     <!-- jequery plugins -->
     

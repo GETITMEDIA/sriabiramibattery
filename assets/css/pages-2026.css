@@ -71,18 +71,15 @@
 .x-page__body .bg-light.rounded .mb-3 i { font-size: 1.5rem; color: #fff !important; }
 .x-page__body .bg-light.rounded h5 { font-size: var(--fs-h4); margin-top: 6px; }
 
-/* breadcrumb strip inside content */
-.x-page__body .breadcrumb { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 10px 18px; margin: 0; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-size: var(--fs-small); text-transform: capitalize; }
-.x-page__body .breadcrumb-item a { color: var(--accent-text); }
-.x-page__body .breadcrumb-item.active { color: var(--muted); }
-
 /* intro row: video + text */
-.x-page__body video.img-fluid, .x-page__body .img-fluid.rounded { width: 100%; border-radius: 24px !important; box-shadow: var(--shadow-lg) !important; }
+.x-page__body video.img-fluid, .x-page__body .img-fluid.rounded {
+  width: 100%; max-height: 520px; object-fit: cover; border-radius: 24px !important; box-shadow: var(--shadow-lg) !important;
+}
 .x-page__body .col-lg-6 > h2 { font-size: var(--fs-h2); font-weight: 700; line-height: 1.15; margin-bottom: 16px; text-wrap: balance; }
-
 /* 03 Tabs ----------------------------------------------------------------- */
 .tabs {
-  display: flex; gap: 6px; width: max-content; max-width: 100%; margin: 0 0 clamp(28px, 3vw, 44px);
+  display: flex; gap: 6px; width: max-content; max-width: 100%;
+  margin: 0 auto clamp(28px, 3vw, 44px);
   padding: 6px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity;
 }
@@ -96,19 +93,73 @@
 .tab-btn:hover { color: var(--text); background: var(--surface-2); }
 .tab-btn.active { background: var(--grad); color: #fff; box-shadow: 0 10px 24px -10px rgba(0, 132, 236, .6); }
 @media (max-width: 767px) { .tabs { width: 100%; border-radius: 18px; } }
-.tab-content { display: none; }
+
+.tab-content {
+  display: none;
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: clamp(48px, 4vw, 72px);
+}
+main > .tab-content,
+body > .tab-content {
+  width: min(100% - 2 * var(--gutter), var(--container));
+}
 .tab-content.active, .tab-content.is-shown { display: block; }
 .tab-content > h2 {
-  display: flex; align-items: center; gap: 12px; margin: 0 0 20px;
-  font-size: var(--fs-h3); font-weight: 600; text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 24px;
+  text-align: center;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text);
 }
-.tab-content > h2::before { content: ""; width: 6px; height: 1.1em; border-radius: 6px; background: var(--grad); }
+.tab-content > h2::before { content: ""; width: 5px; height: 1.1em; border-radius: 6px; background: var(--grad); }
+
+/* Standalone product headings across all pages */
+.x-page h2:not(.x-phero__cap):not(.x-cform__intro h3):not(.x-branch__head h4):not(.sec-title h2):not(.solar-content h2):not(.x-intro-box h2),
+main > h2,
+.x-page__body > h2,
+.x-page__body > .section > h2,
+.x-page__body .section > h2 {
+  width: 100%;
+  max-width: var(--container);
+  margin: clamp(40px, 4vw, 64px) auto clamp(20px, 2.5vw, 32px);
+  text-align: center;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  color: var(--text);
+}
+main > h2,
+body > h2 {
+  width: min(100% - 2 * var(--gutter), var(--container));
+}
+.x-container > h2,
+.x-page__body > h2 {
+  width: 100%;
+}
 
 /* 04 Product grid & cards (both markup families) -------------------------- */
-.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 24px);
+  width: 100%;
+  margin-inline: auto;
+}
+main > .product-grid,
+body > .product-grid {
+  width: min(100% - 2 * var(--gutter), var(--container));
+}
+.tab-content .product-grid { width: 100%; }
 @media (max-width: 1023px) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 /* a grid nested inside another grid spans the full row */
-.product-grid > .product-grid { grid-column: 1 / -1; }
+.product-grid > .product-grid { grid-column: 1 / -1; width: 100%; }
 @media (max-width: 575px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
 .product-card {
   --i: 0;
@@ -150,7 +201,18 @@
 }
 
 /* 05 Category tiles (Microtek / Eastman / Addo / Tyre) -------------------- */
-.product-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: clamp(16px, 1.8vw, 28px); margin-bottom: clamp(40px, 5vw, 72px); }
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(16px, 1.8vw, 28px);
+  width: 100%;
+  margin-inline: auto;
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+main > .product-container,
+body > .product-container {
+  width: min(100% - 2 * var(--gutter), var(--container));
+}
 .product-item {
   display: flex; flex-direction: column; padding: 14px 14px 22px; border-radius: 24px; background: var(--surface);
   border: 1px solid var(--border); box-shadow: var(--shadow-sm); transition: transform .45s var(--ease), box-shadow .45s;
