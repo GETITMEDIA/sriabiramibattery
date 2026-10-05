@@ -256,6 +256,8 @@ html.is-loaded .x-loader { opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity .3s var(--ease), transform .35s var(--ease), visibility .3s;
 }
 .x-sub::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
+/* last items open towards the left so the panel never leaves the screen */
+.x-nav__list > li:nth-last-of-type(-n+3) > .x-sub { left: auto; right: -8px; transform-origin: top right; }
 .x-nav__list > li:hover > .x-sub, .x-nav__list > li:focus-within > .x-sub, .x-nav__list > li.is-open > .x-sub { opacity: 1; visibility: visible; transform: none; }
 .x-sub a {
   display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 14px; border-radius: 12px;

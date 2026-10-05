@@ -4,54 +4,45 @@
    (tabs, product cards, category tiles, features) into the 2026 look.
    ========================================================================== */
 
-/* 01 Page hero ------------------------------------------------------------ */
-.x-phero {
-  position: relative; isolation: isolate; overflow: hidden;
-  margin-top: calc(-1 * var(--header-h));
-  display: flex; align-items: flex-end;
-  min-height: clamp(400px, 62vh, 600px);
-  background: var(--ink); color: #fff;
-}
-.x-phero__media { position: absolute; inset: 0; z-index: -2; }
+/* 01 Page hero: image / video only ------------------------------------- */
+.x-phero { position: relative; overflow: hidden; background: var(--ink); margin-top: 12px; }
 .x-phero__media img, .x-phero__media video {
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
-  animation: x-kenburns 9s ease-out both;
+  display: block; width: 100%; height: auto; max-height: 82vh; object-fit: cover; object-position: center;
+  animation: x-phero-in 1.4s var(--ease) both;
 }
-.x-phero::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    linear-gradient(0deg, rgba(5, 8, 12, .92) 0%, rgba(5, 8, 12, .55) 40%, rgba(5, 8, 12, .15) 75%),
-    linear-gradient(90deg, rgba(5, 8, 12, .7) 0%, rgba(5, 8, 12, 0) 65%);
+@keyframes x-phero-in { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
+/* small caption on image heroes (video heroes stay clean) */
+.x-phero__cap {
+  position: absolute; z-index: 2; top: 50%; translate: 0 -50%;
+  left: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+  max-width: min(420px, calc(100% - 2 * var(--gutter))); margin: 0;
+  padding: clamp(14px, 1rem + .6vw, 22px) clamp(18px, 1.1rem + 1vw, 28px) clamp(14px, 1rem + .6vw, 22px) clamp(20px, 1.2rem + 1vw, 30px);
+  border-radius: 18px; border-left: 4px solid var(--green);
+  background: linear-gradient(120deg, rgba(10, 14, 20, .78), rgba(10, 14, 20, .5));
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, .6);
+  color: #fff; font: 700 clamp(1.125rem, .95rem + .9vw, 1.875rem)/1.2 var(--font-head); letter-spacing: -.01em;
+  animation: x-cap-in 1s var(--ease) .45s both;
 }
-/* image banners often have text baked in on the left: hide it under a deeper fade, keep products on the right */
-.x-phero:has(.x-phero__media img)::before {
-  background:
-    linear-gradient(0deg, rgba(5, 8, 12, .9) 0%, rgba(5, 8, 12, .35) 45%, rgba(5, 8, 12, .1) 80%),
-    linear-gradient(90deg, rgba(5, 8, 12, .96) 0%, rgba(5, 8, 12, .88) 34%, rgba(5, 8, 12, .35) 58%, rgba(5, 8, 12, 0) 78%);
+.x-phero__cap::before {
+  content: "Sri Abirami Battery"; display: block; margin-bottom: 8px;
+  font: 600 clamp(.625rem, .6rem + .15vw, .75rem)/1 var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: #9be07f;
 }
-.x-phero__media img { object-position: right center; }
-@media (max-width: 767px) { .x-phero:has(.x-phero__media img)::before { background: linear-gradient(0deg, rgba(5, 8, 12, .95) 0%, rgba(5, 8, 12, .7) 50%, rgba(5, 8, 12, .3) 100%); } }
-.x-phero__inner { position: relative; padding-top: calc(var(--header-h) + 48px); padding-bottom: clamp(40px, 7vh, 72px); }
-.x-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; font: 500 var(--fs-small)/1 var(--font-body); color: rgba(255, 255, 255, .7); }
-.x-crumbs a { color: rgba(255, 255, 255, .85); transition: color .25s; }
-.x-crumbs a:hover { color: #9be07f; }
-.x-crumbs i { font-size: .6rem; opacity: .6; }
-.x-crumbs span[aria-current] { color: #fff; font-weight: 600; }
-.x-phero__brand { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px; padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .22); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font: 600 var(--fs-eyebrow)/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; }
-.x-phero__brand::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(86, 177, 61, .25); }
-.x-phero__title { max-width: 22ch; font: 700 clamp(1.875rem, 1.3rem + 2.4vw, 3.25rem)/1.1 var(--font-head); letter-spacing: -.02em; text-wrap: balance; animation: x-fade-up .9s var(--ease) .1s both; }
-.x-phero__lead { margin-top: 14px; max-width: 56ch; font-size: var(--fs-lead); color: rgba(255, 255, 255, .85); animation: x-fade-up .9s var(--ease) .25s both; }
-.x-phero__meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; animation: x-fade-up .9s var(--ease) .32s both; }
-.x-phero__meta span, .x-phero__meta a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 12px; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: var(--fs-small); color: rgba(255, 255, 255, .9); }
-.x-phero__meta i { color: #9be07f; }
-.x-phero__meta a:hover { background: rgba(255, 255, 255, .2); color: #fff; }
-.x-phero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; animation: x-fade-up .9s var(--ease) .4s both; }
-.x-btn--glass { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .3); box-shadow: none; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.x-btn--glass:hover { background: rgba(255, 255, 255, .2); box-shadow: none; }
-@media (max-width: 575px) {
-  .x-phero { min-height: 440px; }
-  .x-phero__actions .x-btn { flex: 1 1 100%; }
+@keyframes x-cap-in { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+/* phones: banner is short, so the caption sits under the image instead of covering it */
+@media (max-width: 767px) {
+  .x-phero__cap { position: relative; top: auto; left: auto; translate: none; max-width: none; border-radius: 0; border-left: 0; border-top: 3px solid var(--green); background: var(--ink); box-shadow: none; padding: 14px var(--gutter); font-size: 1.0625rem; }
+  .x-phero__cap::before { margin-bottom: 5px; }
 }
+@media (max-width: 767px) { .x-phero { margin-top: 8px; } .x-phero__media img, .x-phero__media video { max-height: none; } }
+
+/* shop details card (tyre page) */
+.x-pinfo { margin-top: clamp(24px, 3vw, 40px); padding: clamp(20px, 1.2rem + 1vw, 32px); border-radius: 24px; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-md); }
+.x-pinfo__lead { font: 600 var(--fs-h4)/1.4 var(--font-head); color: var(--text); }
+.x-pinfo__meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.x-pinfo__meta span, .x-pinfo__meta a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--surface-2); font-size: var(--fs-small); color: var(--text); }
+.x-pinfo__meta i { color: var(--accent-text); }
+.x-pinfo__meta a:hover { background: color-mix(in srgb, var(--green) 14%, var(--surface-2)); }
 
 /* 02 Page body ------------------------------------------------------------ */
 .x-page__body { padding-block: clamp(48px, 3rem + 3vw, 96px); }
@@ -114,7 +105,10 @@
 .tab-content > h2::before { content: ""; width: 6px; height: 1.1em; border-radius: 6px; background: var(--grad); }
 
 /* 04 Product grid & cards (both markup families) -------------------------- */
-.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); }
+@media (max-width: 1023px) { .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* a grid nested inside another grid spans the full row */
+.product-grid > .product-grid { grid-column: 1 / -1; }
 @media (max-width: 575px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
 .product-card {
   --i: 0;
@@ -248,5 +242,5 @@
 
 /* Motion prefs */
 @media (prefers-reduced-motion: reduce) {
-  .product-card, .x-phero__title, .x-phero__lead, .x-phero__actions, .x-phero__media img, .x-phero__media video { animation: none !important; }
+  .product-card, .x-phero__media img, .x-phero__media video { animation: none !important; }
 }
