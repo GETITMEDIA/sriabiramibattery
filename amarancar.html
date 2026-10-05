@@ -179,28 +179,15 @@
   </div>
   <!-- Features End -->
 
-  <!-- Breadcrumb Start -->
-  <div class="container py-3">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="#">HOME</a></li>
-        <li class="breadcrumb-item"><a href="#">AMARON</a></li>
-        <li class="breadcrumb-item active" aria-current="page">PASSENGER VEHICLES</li>
-      </ol>
-    </nav>
-  </div>
-  <!-- Breadcrumb End -->
-
   <!-- Intro Content Start -->
   <div class="container py-5">
   <div class="row align-items-center g-5">
-    <!-- Left: Image -->
+    <!-- Left: Video -->
     <div class="col-lg-6 animate-left">
-     <video class="img-fluid rounded shadow" autoplay="" muted="" loop="" playsinline="">
-  <source src="assets/images/amaran/carvideo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+      <video class="img-fluid rounded shadow" autoplay="" muted="" loop="" playsinline="">
+        <source src="assets/images/amaran/carvideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
 
     <!-- Right: Text Content -->
@@ -235,7 +222,7 @@
 <h2>🔋 AMARON Car Batteries</h2>
 
 <div class="tabs" id="products">
-  <button class="tab-btn" onclick="openTab('amaroncar')">Car Batteries</button>
+  <button class="tab-btn active" onclick="openTab('amaroncar')">Car Batteries</button>
   <button class="tab-btn" onclick="openTab('amaronheavy')">Heavy Vehicle</button>
   <button class="tab-btn" onclick="openTab('amaronharvest')">Harvest</button>
   <button class="tab-btn" onclick="openTab('amarongo')">Amaron GO</button>
@@ -243,7 +230,7 @@
 </div>
 <!-- Car Batteries -->
 <!-- Car Batteries -->
-<div id="amaroncar" class="tab-content">
+<div id="amaroncar" class="tab-content active" style="display: block;">
   <div class="product-grid">
     <div class="product-card">
       <img src="assets/images/amaran/38B20L.jpg" alt="38B20L/R" loading="lazy" decoding="async">
@@ -397,31 +384,7 @@
         <!-- main-footer end -->
 
   
-  <script>
-  function openTab(tabId) {
-    // Hide all tab contents
-    const tabContents = document.querySelectorAll(".tab-content");
-    tabContents.forEach(content => {
-      content.style.display = "none";
-    });
 
-    // Remove active state from all tab buttons
-    const tabButtons = document.querySelectorAll(".tabs .tab-btn");
-    tabButtons.forEach(btn => btn.classList.remove("active"));
-
-    // Show the selected tab
-    document.getElementById(tabId).style.display = "block";
-
-    // Highlight clicked button
-    if (window.event && event.currentTarget && event.currentTarget.classList) event.currentTarget.classList.add("active");
-  }
-
-  // Default open first tab (Car Batteries)
-  document.addEventListener("DOMContentLoaded", function () {
-    openTab("amaroncar");
-    document.querySelector(".tabs .tab-btn").classList.add("active");
-  });
-</script>
 
     <!-- jequery plugins -->
     

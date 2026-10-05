@@ -218,14 +218,14 @@ Michelin offers a variety of bike tyres in India. Some of the most popular tyre 
 
 <h2>🔌 MICROTEK GEN NEXT HOME UPS</h2>
 <div class="tabs">
-  <button class="tab-btn" onclick="openTab('jk-tyre')">JK Tyre</button>
+  <button class="tab-btn active" onclick="openTab('jk-tyre')">JK Tyre</button>
   <button class="tab-btn" onclick="openTab('michelin-tyre')">Michelin Tyre</button>
   <button class="tab-btn" onclick="openTab('bridgestone-tyre')">Bridgestone Tyre</button>
   <button class="tab-btn" onclick="openTab('yokohama-tyre')">Yokohama Tyre</button>
 </div>
 
 <!-- JK Tyre -->
-<div id="jk-tyre" class="tab-content">
+<div id="jk-tyre" class="tab-content active" style="display: block;">
   <div class="product-grid">
     <div class="product-card">
       <img src="assets/images/tyre/165.jpg" alt="JK Tyre 165/80 R14 TL" loading="lazy" decoding="async">
@@ -547,20 +547,7 @@ Michelin offers a variety of bike tyres in India. Some of the most popular tyre 
   </div>
 </section>
 
-<script>
-  function openTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-      tab.classList.remove('active');
-    });
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    document.getElementById(tabId).classList.add('active');
-    document.querySelector(`.tab-btn[onclick="openTab('${tabId}')"]`).classList.add('active');
-  }
-  // Default open JK Tyre tab
-  openTab('jk-tyre');
-</script>
+
 
         <!-- main-footer -->
            
