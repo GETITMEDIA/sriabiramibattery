@@ -323,11 +323,21 @@ body.menu-open .x-drawer__nav .x-nav__list > li { opacity: 1; transform: none; t
 }
 .x-drawer__nav .x-sub::before { display: none; }
 .x-drawer__nav li.is-open > .x-sub { max-height: 420px; padding-bottom: 12px; }
-.x-drawer__nav .x-sub a { min-height: 44px; display: flex; align-items: center; color: var(--muted); }
-.x-drawer__info h4 { font-size: 1.125rem; margin-bottom: 12px; }
-.x-drawer__info li { color: var(--muted); padding: 6px 0; }
+.x-drawer__info { display: flex; flex-direction: column; gap: 14px; padding-top: 8px; border-top: 1px solid var(--border); }
+.x-drawer__info h4 { font-size: 1.0625rem; font-weight: 700; margin: 0; color: var(--text); }
+.x-drawer__info ul { display: flex; flex-direction: column; gap: 12px; }
+.x-drawer__info li { padding: 0; }
+.x-drawer__info li, .x-drawer__info a {
+  display: flex; align-items: center; gap: 12px; font-size: .9375rem; color: var(--text); line-height: 1.5; font-weight: 500;
+}
+.x-drawer__info li i, .x-drawer__info a i {
+  flex-shrink: 0; width: 36px; height: 36px; border-radius: 10px;
+  display: grid; place-items: center; background: var(--surface-2);
+  color: var(--accent-text); font-size: .875rem;
+}
+.x-drawer__info a { transition: color .25s; }
 .x-drawer__info a:hover { color: var(--accent-text); }
-.x-drawer .x-social a { width: 44px; height: 44px; background: var(--surface-2); color: var(--text); }
+.x-drawer__info a:hover i { background: color-mix(in srgb, var(--green) 18%, var(--surface-2)); transform: scale(1.05); transition: transform .3s var(--ease), background .3s; }
 
 /* 07 Hero — full-screen photo slider ------------------------------------- */
 .x-hero {
