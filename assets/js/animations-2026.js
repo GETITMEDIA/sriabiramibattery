@@ -76,26 +76,9 @@
     }
   }
 
-  /* ---------- Theme toggle ---------- */
-  qsa('[data-theme-toggle]').forEach(function (btn) {
-    function sync() {
-      var dark = html.getAttribute('data-theme') === 'dark';
-      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-      var icon = qs('i', btn);
-      if (icon) icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
-    }
-    sync();
-    btn.addEventListener('click', function () {
-      var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      try { localStorage.setItem('sab-theme', next); } catch (e) { /* storage unavailable */ }
-      qsa('[data-theme-toggle]').forEach(function (b) {
-        b.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
-        var i = qs('i', b);
-        if (i) i.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-      });
-    });
-  });
+  /* Clean up any legacy dark theme attribute */
+  html.removeAttribute('data-theme');
+  try { localStorage.removeItem('sab-theme'); } catch (e) {}
 
   /* ---------- Scroll-driven UI: header, progress bar, back-to-top ---------- */
   var header = qs('.x-header');
