@@ -391,6 +391,35 @@
     })(t0);
   });
 
+  /* ---------- Product cards: reveal on scroll + tilt ---------- */
+  var cards = qsa('.product-card, .product-item');
+  if (cards.length) {
+    doc.documentElement.classList.add('js-cards');
+    // stagger by position inside each grid row batch
+    cards.forEach(function (c) {
+      var idx = Array.prototype.indexOf.call(c.parentNode.children, c);
+      c.style.setProperty('--i', idx % 4);
+    });
+    whenVisible(cards, function (c) { c.classList.add('is-in'); }, 0.15);
+
+    var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (finePointer && !reduceMotion) {
+      cards.forEach(function (c) {
+        c.addEventListener('pointermove', function (e) {
+          var r = c.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          c.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
+          c.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg');
+        });
+        c.addEventListener('pointerleave', function () {
+          c.style.setProperty('--rx', '0deg');
+          c.style.setProperty('--ry', '0deg');
+        });
+      });
+    }
+  }
+
   var bars = qsa('.x-bar__fill[data-percent]');
   bars.forEach(function (el) { el.style.setProperty('--p', (parseFloat(el.dataset.percent) || 0) / 100); });
   // observe the track: the fill starts at scaleX(0), which has no visible area
