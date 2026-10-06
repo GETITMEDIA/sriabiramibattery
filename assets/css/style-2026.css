@@ -213,21 +213,21 @@ html.is-loaded .x-loader { opacity: 0; visibility: hidden; pointer-events: none;
   pointer-events: auto; position: relative;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   width: calc(100% - 2 * var(--gutter)); max-width: calc(var(--container) - 2 * var(--gutter));
-  height: 72px; margin-inline: auto; padding: 0 16px 0 18px;
+  height: 84px; margin-inline: auto; padding: 0 16px 0 18px;
   border-radius: 22px; background: var(--surface); color: var(--text);
   border: 1px solid var(--border);
   box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 18px 50px -18px rgba(5, 10, 15, .45);
   transition: height .45s var(--ease), box-shadow .45s, background .45s, border-radius .45s var(--ease);
 }
 .x-header.is-scrolled .x-header__bar {
-  height: 62px; border-radius: 18px;
+  height: 72px; border-radius: 18px;
   background: var(--glass); -webkit-backdrop-filter: blur(18px) saturate(180%); backdrop-filter: blur(18px) saturate(180%);
   box-shadow: 0 20px 50px -20px rgba(5, 10, 15, .35);
 }
 .x-logo { display: inline-flex; align-items: center; flex-shrink: 0; border-radius: 12px; transition: transform .35s var(--ease); }
 .x-logo:hover { transform: scale(1.03); }
-.x-logo img { height: 52px; width: auto; transition: height .45s var(--ease); }
-.x-header.is-scrolled .x-logo img { height: 44px; }
+.x-logo img { height: 70px; width: auto; transition: height .45s var(--ease); }
+.x-header.is-scrolled .x-logo img { height: 58px; }
 
 .x-nav { display: none; }
 @media (min-width: 1200px) { .x-nav { display: block; margin-left: auto; } }
@@ -283,10 +283,10 @@ html.is-loaded .x-loader { opacity: 0; visibility: hidden; pointer-events: none;
 .x-burger:hover span:nth-child(2) { width: 18px; margin-left: 0; }
 @media (max-width: 767px) {
   .x-header { padding-top: 8px; }
-  .x-header__bar { height: 64px; padding: 0 8px 0 12px; border-radius: 18px; width: calc(100% - 24px); }
-  .x-logo img { height: 44px; }
-  .x-header.is-scrolled .x-header__bar { height: 58px; }
-  .x-header.is-scrolled .x-logo img { height: 40px; }
+  .x-header__bar { height: 72px; padding: 0 8px 0 12px; border-radius: 18px; width: calc(100% - 24px); }
+  .x-logo img { height: 56px; }
+  .x-header.is-scrolled .x-header__bar { height: 64px; }
+  .x-header.is-scrolled .x-logo img { height: 50px; }
 }
 
 /* 06 Mobile drawer -------------------------------------------------------- */
@@ -304,7 +304,7 @@ body.menu-open .x-drawer { visibility: visible; transition: visibility 0s; }
 body.menu-open .x-drawer__backdrop { opacity: 1; }
 body.menu-open .x-drawer__panel { transform: none; }
 .x-drawer__top { display: flex; align-items: center; justify-content: space-between; }
-.x-drawer__top .x-logo img { height: 44px; }
+.x-drawer__top .x-logo img { height: 56px; }
 .x-drawer__nav .x-nav__list { display: block; }
 .x-drawer__nav .x-nav__list > li {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border);
@@ -407,21 +407,18 @@ body.menu-open .x-drawer__nav .x-nav__list > li { opacity: 1; transform: none; t
 .x-hslide.is-active .x-hero__btns { animation: x-fade-up 1s var(--ease) .75s both; }
 .x-hslide.is-active .x-hero__big { animation: x-fade-in 2s ease .4s both; }
 
-/* controls: dots, centred */
+/* controls: line indicators, right-aligned, horizontal */
 .x-hero__ctrl {
   position: absolute; z-index: 3; left: 0; right: 0; bottom: clamp(28px, 5vh, 44px);
-  display: flex; justify-content: center;
+  display: flex; justify-content: flex-end;
+  max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter);
 }
-.x-hero__dots {
-  display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 999px;
-  background: rgba(10, 14, 20, .35); border: 1px solid rgba(255, 255, 255, .14);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-}
-.x-hero__dot { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; transition: width .5s var(--ease); }
-.x-hero__dot i { position: relative; display: block; width: 10px; height: 10px; border-radius: 10px; overflow: hidden; background: rgba(255, 255, 255, .45); transition: width .5s var(--ease), background .3s; }
+.x-hero__dots { display: flex; align-items: center; gap: 6px; }
+.x-hero__dot { display: grid; place-items: center; width: 36px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; transition: width .5s var(--ease); }
+.x-hero__dot i { position: relative; display: block; width: 100%; height: 3px; border-radius: 3px; overflow: hidden; background: rgba(255, 255, 255, .4); transition: height .3s, background .3s; }
 .x-hero__dot:hover i { background: rgba(255, 255, 255, .8); }
-.x-hero__dot.is-active { width: 48px; }
-.x-hero__dot.is-active i { width: 40px; background: rgba(255, 255, 255, .3); }
+.x-hero__dot.is-active { width: 72px; }
+.x-hero__dot.is-active i { height: 4px; background: rgba(255, 255, 255, .25); }
 .x-hero__dot i::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, #9be07f, #fff); transform: scaleX(0); transform-origin: left; }
 .x-hero__dot.is-active i::after { animation: x-progress var(--dur, 6500ms) linear forwards; }
 .x-hero.is-paused .x-hero__dot.is-active i::after { animation-play-state: paused; }
